@@ -1,5 +1,5 @@
 let constants = {}
-constants.organization = 'poanetwork'
+constants.organization = 'ColuLocalNetwork'
 constants.repoName = 'poa-chain-spec'
 constants.addressesSourceFile = 'contracts.json'
 constants.ABIsSources = {
@@ -26,24 +26,9 @@ constants.endTimeDefaultInMinutes = 2890
 constants.getTransactionReceiptInterval = 5000
 
 constants.NETWORKS = {
-  '77': {
-    NAME: 'Sokol',
-    BRANCH: 'sokol',
-    TESTNET: true
-  },
-  '99': {
-    NAME: 'Core',
-    BRANCH: 'core',
-    TESTNET: false
-  },
-  '79': {
-    NAME: 'Dai-Test',
-    BRANCH: 'dai-test',
-    TESTNET: true
-  },
-  '100': {
-    NAME: 'Dai',
-    BRANCH: 'dai',
+  '121': {
+    NAME: 'FuseNetwork',
+    BRANCH: 'FuseNetwork',
     TESTNET: false
   }
 }
