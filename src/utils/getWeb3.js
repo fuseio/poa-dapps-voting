@@ -130,7 +130,7 @@ export default async function getWeb3(netId, updateKeys) {
     web3 = new Web3(new Web3.providers.HttpProvider(network.RPC))
   }
 
-  document.title = `${netIdName} - POA Governance DApp`
+  document.title = `${netIdName} - Fuse Governance DApp`
 
   return {
     web3Instance: web3,

@@ -14,8 +14,6 @@ import validatorStore from './stores/ValidatorStore'
 import { Provider } from 'mobx-react'
 import { Router, Route } from 'react-router-dom'
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router'
-import { constants } from './utils/constants'
-import { getContractsAddresses } from './contracts/addresses'
 import { getNetworkBranch } from './utils/utils'
 
 const browserHistory = createBrowserHistory()
@@ -55,38 +53,10 @@ class AppMainRouter extends Component {
   }
 
   initialize = async web3Config => {
-    await getContractsAddresses(constants.NETWORKS[web3Config.netId].BRANCH)
-
     contractsStore.setWeb3Instance(web3Config)
 
-    const setPoaConsensus = contractsStore.setPoaConsensus(web3Config)
-    const setBallotsStorage = contractsStore.setBallotsStorage(web3Config)
-    const setKeysManager = contractsStore.setKeysManager(web3Config)
-    const setProxyStorage = contractsStore.setProxyStorage(web3Config)
-    const setVotingToChangeKeys = contractsStore.setVotingToChangeKeys(web3Config)
-    const setVotingToChangeMinThreshold = contractsStore.setVotingToChangeMinThreshold(web3Config)
-    const setVotingToChangeProxy = contractsStore.setVotingToChangeProxy(web3Config)
-    const setValidatorMetadata = contractsStore.setValidatorMetadata(web3Config)
-
-    let promises = [
-      setPoaConsensus,
-      setBallotsStorage,
-      setKeysManager,
-      setProxyStorage,
-      setVotingToChangeKeys,
-      setVotingToChangeMinThreshold,
-      setVotingToChangeProxy,
-      setValidatorMetadata
-    ]
-
-    const networkName = constants.NETWORKS[web3Config.netId].NAME.toLowerCase()
-    if (networkName === constants.CORE || networkName === constants.SOKOL) {
-      // if we're in Core or Sokol
-      promises.push(contractsStore.setEmissionFunds(web3Config))
-      promises.push(contractsStore.setVotingToManageEmissionFunds(web3Config))
-    }
-
-    await Promise.all(promises)
+    await contractsStore.setVotingToChangeProxy(web3Config)
+    await contractsStore.setPoaConsensus(web3Config)
 
     await contractsStore.updateKeys(web3Config.defaultAccount)
 

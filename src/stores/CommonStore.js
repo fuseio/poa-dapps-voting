@@ -14,7 +14,7 @@ class CommonStore {
     this.loadingNetworkBranch = null
     this.isActiveFilter = false
     this.isToFinalizeFilter = false
-    this.rootPath = '/poa-dapps-voting'
+    this.rootPath = '/voting'
     this.loadMoreLimit = 10
   }
 

@@ -19,6 +19,7 @@ messages.END_TIME_SHOULD_BE_GREATER_THAN_NOW_MSG = 'Ballot end time should be gr
 messages.BALLOT_TYPE_IS_EMPTY_MSG = 'Ballot type is empty'
 messages.USER_DENIED_ACCOUNT_ACCESS = 'You have denied access to your accounts'
 messages.NO_METAMASK_MSG = 'Your MetaMask is locked or not installed.'
+messages.ALREADY_VOTED_MSG = 'You have already voted on this ballot'
 messages.ballotIsNotActiveMsg = timeToStart => {
   return `The ballot is not active yet. Time to start: ${timeToStart}`
 }
