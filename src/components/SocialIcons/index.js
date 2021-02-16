@@ -1,6 +1,5 @@
 import React from 'react'
 import { IconGithub } from '../IconGithub'
-import { IconPOA } from '../IconPOA'
 import { IconTelegram } from '../IconTelegram'
 import { IconTwitter } from '../IconTwitter'
 
@@ -35,22 +34,21 @@ export const SocialIcons = ({ extraClass = '', networkBranch = '' }) => {
       <IconTwitter
         backgroundColor={backgroundColor}
         color={iconColor}
-        text="POA Twitter"
-        url="https://twitter.com/poanetwork"
+        text="Fuse Twitter"
+        url="https://twitter.com/fuse_network?lang=en"
       />
       <IconTelegram
         backgroundColor={backgroundColor}
         color={iconColor}
-        text="POA Telegram"
-        url="https://t.me/oraclesnetwork"
+        text="Fuse Telegram"
+        url="https://t.me/fuseio"
       />
       <IconGithub
         backgroundColor={backgroundColor}
         color={iconColor}
-        text="POA Github"
-        url="https://github.com/poanetwork"
+        text="Fuse Github"
+        url="https://github.com/fuseio"
       />
-      <IconPOA text="POA Network" url="https://poa.net" backgroundColor={backgroundColor} color={iconColor} />
     </div>
   )
 }

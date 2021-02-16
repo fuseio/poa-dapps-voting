@@ -1,0 +1,376 @@
+[
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getStartBlock",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getQuorumState",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "MIN_BALLOT_DURATION_CYCLES",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getVoterChoice",
+    "inputs": [{ "type": "uint256", "name": "_id" }, { "type": "address", "name": "_key" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getAccepted",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "bool", "name": "" }],
+    "name": "getIsFinalized",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "bool", "name": "" }],
+    "name": "isActiveBallot",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "bool", "name": "" }],
+    "name": "getFinalizeCalled",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "DECIMALS",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "bool", "name": "" }],
+    "name": "isInitialized",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getNextBallotId",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "MAX_BALLOT_DURATION_CYCLES",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "string", "name": "" }],
+    "name": "getDescription",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getRejected",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "activeBallotsLength",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "bool", "name": "" }],
+    "name": "isValidVotingKey",
+    "inputs": [{ "type": "address", "name": "_address" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "initialize",
+    "inputs": [],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "bool", "name": "" }],
+    "name": "canBeFinalized",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "MAX_LIMIT_OF_BALLOTS",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "pure",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getMaxBallotDurationCycles",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [
+      { "type": "uint256", "name": "startBlock" },
+      { "type": "uint256", "name": "endBlock" },
+      { "type": "bool", "name": "isFinalized" },
+      { "type": "address", "name": "proposedValue" },
+      { "type": "uint256", "name": "contractType" },
+      { "type": "address", "name": "creator" },
+      { "type": "string", "name": "description" },
+      { "type": "bool", "name": "canBeFinalizedNow" },
+      { "type": "bool", "name": "alreadyVoted" }
+    ],
+    "name": "getBallotInfo",
+    "inputs": [{ "type": "uint256", "name": "_id" }, { "type": "address", "name": "_key" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getEndBlock",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getIndex",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "vote",
+    "inputs": [{ "type": "uint256", "name": "_id" }, { "type": "uint256", "name": "_choice" }],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "onCycleEnd",
+    "inputs": [{ "type": "address[]", "name": "validators" }],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getContractType",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "newBallot",
+    "inputs": [
+      { "type": "uint256", "name": "_startAfterNumberOfCycles" },
+      { "type": "uint256", "name": "_cyclesDuration" },
+      { "type": "uint256", "name": "_contractType" },
+      { "type": "address", "name": "_proposedValue" },
+      { "type": "string", "name": "_description" }
+    ],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "bool", "name": "" }],
+    "name": "hasAlreadyVoted",
+    "inputs": [{ "type": "uint256", "name": "_id" }, { "type": "address", "name": "_key" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256[]", "name": "" }],
+    "name": "activeBallots",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "getCreator",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "getProposedValue",
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "activeBallotsAtIndex",
+    "inputs": [{ "type": "uint256", "name": "_index" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "getProxyStorage",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "bool", "name": "" }],
+    "name": "validContractType",
+    "inputs": [{ "type": "uint256", "name": "_contractType" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "pure",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getMinBallotDurationCycles",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "validatorActiveBallots",
+    "inputs": [{ "type": "address", "name": "_key" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "uint256", "name": "" }],
+    "name": "getBallotLimitPerValidator",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "event",
+    "name": "BallotCreated",
+    "inputs": [
+      { "type": "uint256", "name": "id", "indexed": true },
+      { "type": "address", "name": "creator", "indexed": true }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "BallotFinalized",
+    "inputs": [{ "type": "uint256", "name": "id", "indexed": true }],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Vote",
+    "inputs": [
+      { "type": "uint256", "name": "id", "indexed": true },
+      { "type": "uint256", "name": "decision", "indexed": false },
+      { "type": "address", "name": "voter", "indexed": true }
+    ],
+    "anonymous": false
+  }
+]

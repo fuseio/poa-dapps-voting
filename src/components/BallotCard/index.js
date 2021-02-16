@@ -61,6 +61,8 @@ export class BallotCard extends React.Component {
   @observable quorumState
   @observable minBallotDuration
   @observable minThreshold
+  @observable votesFor
+  @observable votesAgainst
 
   @computed
   get cancelOrFinalizeButtonDisplayName() {
@@ -115,7 +117,7 @@ export class BallotCard extends React.Component {
 
   @computed
   get votesForNumber() {
-    let votes = (this.totalVoters + this.progress) / 2
+    let votes = this.votesFor
     if (isNaN(votes)) votes = 0
     return votes
   }
@@ -133,7 +135,7 @@ export class BallotCard extends React.Component {
 
   @computed
   get votesAgainstNumber() {
-    let votes = (this.totalVoters - this.progress) / 2
+    let votes = this.votesAgainst
     if (isNaN(votes)) votes = 0
     return votes
   }
@@ -257,21 +259,17 @@ export class BallotCard extends React.Component {
         .utc((votingState.creationTime + contractsStore.ballotCancelingThreshold) * 1000)
         .format(USDateTimeFormat)
     }
-    this.startTimeUnix = moment.utc(votingState.startTime * 1000) / 1000
-    this.startTime = moment.utc(votingState.startTime * 1000).format(USDateTimeFormat)
-    this.endTime = moment.utc(votingState.endTime * 1000).format(USDateTimeFormat)
+    this.startTimeUnix = moment.utc(votingState.startTime)
+    this.startTime = moment.utc(votingState.startTime).format(USDateTimeFormat)
+    this.endTime = moment.utc(votingState.endTime).format(USDateTimeFormat)
     // getCreator
     this.creator = votingState.creator
     this.creatorMiningKey = votingState.creatorMiningKey
     // getTotalVoters
-    if (votingState.hasOwnProperty('totalVoters')) {
-      this.totalVoters = Number(votingState.totalVoters)
-    } else {
-      this.burnVotes = Number(votingState.burnVotes)
-      this.freezeVotes = Number(votingState.freezeVotes)
-      this.sendVotes = Number(votingState.sendVotes)
-      this.totalVoters = this.burnVotes + this.freezeVotes + this.sendVotes
-    }
+    this.totalVoters = votingState.votesFor + votingState.votesAgainst
+    // votes data
+    this.votesFor = votingState.votesFor
+    this.votesAgainst = votingState.votesAgainst
 
     // getProgress
     if (votingState.hasOwnProperty('progress')) {
@@ -360,13 +358,13 @@ export class BallotCard extends React.Component {
 
   isActive = async () => {
     const { contractsStore, id, votingType } = this.props
-    let _isActive = await this.repeatGetProperty(contractsStore, votingType, id, 'isActive', 0)
+    let _isActive = await this.repeatGetProperty(contractsStore, votingType, id, 'isActiveBallot', 0)
     return _isActive
   }
 
   canBeFinalizedNow = async () => {
     const { contractsStore, id, votingType } = this.props
-    let _canBeFinalizedNow = await this.repeatGetProperty(contractsStore, votingType, id, 'canBeFinalizedNow', 0)
+    let _canBeFinalizedNow = await this.repeatGetProperty(contractsStore, votingType, id, 'canBeFinalized', 0)
     this.canBeFinalized = _canBeFinalizedNow
   }
 
@@ -410,15 +408,14 @@ export class BallotCard extends React.Component {
       return
     }
 
+    if (this.hasAlreadyVoted) {
+      swal('Warning!', messages.ALREADY_VOTED_MSG, 'warning')
+      return
+    }
+
     const { commonStore, contractsStore, id, votingType, ballotsStore, pos } = this.props
     const { push } = this.props.routing
     commonStore.showLoading()
-    let isValidVote = await this.isValidVote()
-    if (!isValidVote) {
-      commonStore.hideLoading()
-      swal('Warning!', messages.INVALID_VOTE_MSG, 'warning')
-      return
-    }
 
     const contract = this.getContract(contractsStore, votingType)
 

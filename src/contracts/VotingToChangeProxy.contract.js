@@ -1,15 +1,12 @@
 import { networkAddresses } from './addresses'
-import helpers from './helpers'
-import { constants } from '../utils/constants'
+import VotingToChangeProxyABI from '../abis/votingAbi.json'
 
 export default class VotingToChangeProxy {
   async init({ web3, netId }) {
-    const { VOTING_TO_CHANGE_PROXY_ADDRESS } = networkAddresses()
+    const { VOTING_TO_CHANGE_PROXY_ADDRESS } = networkAddresses(netId)
     console.log('VotingToChangeProxy address', VOTING_TO_CHANGE_PROXY_ADDRESS)
 
-    const votingToChangeProxyABI = await helpers.getABI(constants.NETWORKS[netId].BRANCH, 'VotingToChangeProxyAddress')
-
-    this.instance = new web3.eth.Contract(votingToChangeProxyABI, VOTING_TO_CHANGE_PROXY_ADDRESS)
+    this.instance = new web3.eth.Contract(VotingToChangeProxyABI, VOTING_TO_CHANGE_PROXY_ADDRESS)
     this.address = VOTING_TO_CHANGE_PROXY_ADDRESS
   }
 
@@ -40,7 +37,7 @@ export default class VotingToChangeProxy {
   }
 
   nextBallotId() {
-    return this.instance.methods.nextBallotId().call()
+    return this.instance.methods.getNextBallotId().call()
   }
 
   getBallotInfo(_id, _votingKey) {
@@ -51,7 +48,10 @@ export default class VotingToChangeProxy {
   }
 
   getMinThresholdOfVoters(_id) {
-    return this.instance.methods.getMinThresholdOfVoters(_id).call()
+    if (this.doesMethodExist('getMinThresholdOfVoters')) {
+      return this.instance.methods.getMinThresholdOfVoters(_id).call()
+    }
+    return null
   }
 
   hasAlreadyVoted(_id, votingKey) {
@@ -79,6 +79,22 @@ export default class VotingToChangeProxy {
   }
 
   minBallotDuration() {
-    return this.instance.methods.minBallotDuration().call()
+    return this.instance.methods.getMinBallotDurationCycles().call()
+  }
+
+  getBalletLimitPerValidator() {
+    return this.instance.methods.getBallotLimitPerValidator().call()
+  }
+
+  maxLimitOfBallots() {
+    return this.instance.methods['MAX_LIMIT_OF_BALLOTS']().call()
+  }
+
+  getVoterChoice(id, key) {
+    return this.instance.methods.getVoterChoice(id, key).call()
+  }
+
+  isValidVotingKey(key) {
+    return this.instance.methods.isValidVotingKey(key).call()
   }
 }

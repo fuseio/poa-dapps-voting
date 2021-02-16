@@ -398,22 +398,12 @@ export class NewBallot extends React.Component {
 
   componentDidMount() {
     const { ballotStore } = this.props
-    ballotStore.changeBallotType(null, ballotStore.BallotType.keys)
+    ballotStore.changeBallotType(null, ballotStore.BallotType.proxy)
   }
 
   getMenuItems() {
     const { contractsStore, ballotStore } = this.props
     let items = [
-      {
-        active: ballotStore.BallotType.keys === ballotStore.ballotType,
-        onClick: e => ballotStore.changeBallotType(e, ballotStore.BallotType.keys),
-        text: 'Validator Management Ballot'
-      },
-      {
-        active: ballotStore.BallotType.minThreshold === ballotStore.ballotType,
-        onClick: e => ballotStore.changeBallotType(e, ballotStore.BallotType.minThreshold),
-        text: 'Consensus Threshold Ballot'
-      },
       {
         active: ballotStore.BallotType.proxy === ballotStore.ballotType,
         onClick: e => ballotStore.changeBallotType(e, ballotStore.BallotType.proxy),

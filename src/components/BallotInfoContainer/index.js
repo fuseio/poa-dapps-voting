@@ -18,7 +18,7 @@ export class BallotInfoContainer extends React.Component {
   }
 
   render() {
-    let { memo = '', threshold, networkBranch } = this.props
+    let { memo = '', networkBranch } = this.props
     let toggleShowMore =
       memo.length > MAX_DETAILS_LENGTH ? (
         <span
@@ -33,9 +33,6 @@ export class BallotInfoContainer extends React.Component {
 
     return (
       <div className="bc-BallotInfoContainer">
-        <div className="bc-BallotInfoContainer_Info bc-BallotInfoContainer_Info-minimum">
-          Minimum {threshold} validators are required to pass the proposal
-        </div>
         <div
           className={`bc-BallotInfoContainer_Info bc-BallotInfoContainer_Info-details ${
             this.state.detailsCollapsed ? 'bc-BallotInfoContainer_Info-collapsed' : ''

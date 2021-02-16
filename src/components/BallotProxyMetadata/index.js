@@ -9,15 +9,10 @@ export class BallotProxyMetadata extends React.Component {
   render() {
     const { ballotStore, networkBranch } = this.props
     let options = [
-      /*0*/ { value: '', label: '' },
-      /*1*/ { value: '1', label: ballotStore.ProxyBallotType[1] }, // KeysManager
-      /*2*/ { value: '2', label: ballotStore.ProxyBallotType[2] }, // VotingToChangeKeys
-      /*3*/ { value: '3', label: ballotStore.ProxyBallotType[3] }, // VotingToChangeMinThreshold
-      /*4*/ { value: '4', label: ballotStore.ProxyBallotType[4] }, // VotingToChangeProxy
-      /*5*/ { value: '5', label: ballotStore.ProxyBallotType[5] }, // BallotsStorage
-      /*6*/ { value: '7', label: ballotStore.ProxyBallotType[7] }, // ValidatorMetadata
-      /*7*/ { value: '8', label: ballotStore.ProxyBallotType[8] }, // ProxyStorage
-      /*8*/ { value: '9', label: ballotStore.ProxyBallotType[9] } // RewardByBlock
+      /*1*/ { value: '1', label: ballotStore.ProxyBallotType[1] }, // Consensus
+      /*2*/ { value: '2', label: ballotStore.ProxyBallotType[2] }, // BlockReward
+      /*3*/ { value: '3', label: ballotStore.ProxyBallotType[3] }, // ProxyStorage
+      /*4*/ { value: '4', label: ballotStore.ProxyBallotType[4] } // Voting
     ]
 
     return (
@@ -43,13 +38,22 @@ export class BallotProxyMetadata extends React.Component {
         </div>
         <div className="frm-BallotProxyMetadata_Row">
           <FormInput
-            hint="Ballot's end time."
+            hint="Ballot's start after number of cycles."
+            id="datetime-local"
+            networkBranch={networkBranch}
+            onChange={e => ballotStore.changeBallotMetadata(e, 'endTime')}
+            title="Ballot Start"
+            type="datetime-local"
+            value={ballotStore.cycleStart}
+          />
+          <FormInput
+            hint="Ballot's cycle duration."
             id="datetime-local"
             networkBranch={networkBranch}
             onChange={e => ballotStore.changeBallotMetadata(e, 'endTime')}
             title="Ballot End"
             type="datetime-local"
-            value={ballotStore.endTime}
+            value={ballotStore.cycleEnd}
           />
         </div>
       </div>

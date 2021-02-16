@@ -26,7 +26,7 @@ constants.minBallotDurationInDays = 2
 constants.startTimeOffsetInMinutes = 5
 constants.endTimeDefaultInMinutes = 2890
 constants.getTransactionReceiptInterval = 5000
-constants.rootPath = '/poa-dapps-voting'
+constants.rootPath = '/voting'
 
 constants.navigationData = [
   {
@@ -54,28 +54,15 @@ constants.navigationData = [
 constants.SOKOL = 'sokol'
 constants.CORE = 'core'
 constants.KOVAN = 'kovan'
+constants.FUSE = 'core'
 
 constants.NETWORKS = {
-  '42': {
-    NAME: 'Kovan',
-    FULLNAME: 'Kovan Testnet',
-    RPC: 'https://kovan.infura.io/v3/1125fe73d87c4e5396678f4e3089b3dd',
-    BRANCH: constants.KOVAN,
-    SORTORDER: 3
-  },
-  '77': {
-    NAME: 'Sokol',
-    FULLNAME: 'Sokol Testnet',
-    RPC: 'https://sokol.poa.network',
-    BRANCH: constants.SOKOL,
-    SORTORDER: 4
-  },
-  '99': {
-    NAME: 'Core',
-    FULLNAME: 'POA Core',
-    RPC: 'https://core.poa.network',
-    BRANCH: constants.CORE,
-    SORTORDER: 1
+  '122': {
+    NAME: 'Fuse',
+    FULLNAME: 'Fuse Network',
+    RPC: 'https://rpc.fuse.io',
+    BRANCH: constants.FUSE,
+    SORTORDER: 2
   }
 }
 

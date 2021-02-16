@@ -20,14 +20,10 @@ class BallotStore {
     payout: 3
   }
   ProxyBallotType = {
-    1: 'KeysManager',
-    2: 'VotingToChangeKeys',
-    3: 'VotingToChangeMinThreshold',
-    4: 'VotingToChangeProxy',
-    5: 'BallotsStorage',
-    7: 'ValidatorMetadata',
-    8: 'ProxyStorage',
-    9: 'RewardByBlock'
+    1: 'Consensus',
+    2: 'BlockReward',
+    3: 'ProxyStorage',
+    4: 'Voting'
   }
   @observable ballotType
   @observable keysBallotType
@@ -45,6 +41,8 @@ class BallotStore {
     this.endTime = moment()
       .add(constants.endTimeDefaultInMinutes, 'minutes')
       .format('YYYY-MM-DDTHH:mm')
+    this.cycleStart = 1
+    this.cycleEnd = 2
 
     this.ballotKeys = {
       keyType: null,

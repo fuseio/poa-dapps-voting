@@ -80,6 +80,9 @@
     "test": "node scripts/test.js --env=jsdom",
     "lint": "./node_modules/.bin/eslint src"
   },
+  "engines": {
+    "node": "11.x"
+  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
